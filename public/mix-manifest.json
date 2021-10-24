@@ -1,4 +1,16 @@
 {
+    "/css/styles.css": "/css/styles.css",
+    "/css/main.css": "/css/main.css",
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/bootstrap.js": "/js/bootstrap.js",
+    "/js/common.js": "/js/common.js",
+    "/js/scripts.js": "/js/scripts.js",
+    "/json/chat.json": "/json/chat.json",
+    "/json/contacts.json": "/json/contacts.json",
+    "/json/events.json": "/json/events.json",
+    "/json/icons.json": "/json/icons.json",
+    "/json/mailbox.json": "/json/mailbox.json",
+    "/json/products.json": "/json/products.json",
+    "/json/search.json": "/json/search.json",
+    "/json/tasks.json": "/json/tasks.json"
 }
