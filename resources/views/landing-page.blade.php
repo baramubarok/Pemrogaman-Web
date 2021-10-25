@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <p>landing page</p>
+    <p>{{ $data }}</p>
 @endsection
