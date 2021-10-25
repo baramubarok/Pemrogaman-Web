@@ -24,7 +24,7 @@ $description = 'Login Page';
             <div>
                 <div class="mb-5">
                     <h1 class="display-3 text-white">Search Your Service</h1>
-                    <h1 class="display-3 text-white">Siap Melayani Kebutuhan</h1>
+                    <h1 class="display-3 text-white">Siap Melayani Kebutuhan Anda</h1>
                 </div>
                 <p class="h6 text-white lh-1-5 mb-5">
                     Melayani berbagai kebutuhan anda dibidang jasa. Pengguna dapat memesan
