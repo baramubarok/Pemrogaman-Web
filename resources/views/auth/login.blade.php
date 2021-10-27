@@ -44,7 +44,7 @@ $description = 'Login Page';
         <div class="sw-lg-50 px-5">
             <div class="sh-11">
                 <a href="{{ url('/') }}">
-                    <div class="logo-default"></div>
+                    <div class="cta-1 mb-0 text-primar"> Serch Your Service</div>
                 </a>
             </div>
             <div class="mb-5">
@@ -52,7 +52,7 @@ $description = 'Login Page';
                 <h2 class="cta-1 text-primary">Mari Kita Mulai!</h2>
             </div>
             <div class="mb-5">
-                <p class="h6">Gunakanlah Akun yang Sudah Terdaftar.</p>
+                <p class="h6">Gunakanlah akun yang sudah terdaftar.</p>
                 <p class="h6">
                    Jika anda tidak mempunyai akun silakan,
                     <a href="{{ url('/Pages/Authentication/Register') }}">register</a>
