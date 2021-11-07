@@ -30,9 +30,10 @@ $description = 'Login Page';
                     Melayani berbagai kebutuhan anda dibidang jasa. Pengguna dapat memesan
                     jasa yang tersediia dengan mudah dan cepat
                 </p>
-                <div class="mb-5">
-                    {{-- <a class="btn btn-lg btn-outline-white" href="{{ url('/') }}">Learn More</a> --}}
-                </div>
+
+                {{-- <div class="mb-5">
+                    <a class="btn btn-lg btn-outline-white" href="{{ url('/') }}">Learn More</a>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -45,6 +46,7 @@ $description = 'Login Page';
             <div class="sh-11">
                 <a href="{{ url('/') }}">
                     <div class="cta-1 mb-0 text-primary">Search Your Service</div>
+
                 </a>
             </div>
             <div class="mb-5">
@@ -52,9 +54,10 @@ $description = 'Login Page';
                 <h2 class="cta-1 text-primary">Mari Kita Mulai!</h2>
             </div>
             <div class="mb-5">
-                <p class="h6">Gunakanlah Akun yang Sudah Terdaftar.</p>
+
+                <p class="h6">Gunakanlah akun yang sudah terdaftar.</p>
                 <p class="h6">
-                    Jika Tidak Mempunyai Akun, Silakan
+                    Jika anda tidak mempunyai akun silakan,
                     <a href="{{ url('/Pages/Authentication/Register') }}">register</a>
                     .
                 </p>
