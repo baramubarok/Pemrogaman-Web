@@ -2,3 +2,7 @@ body {
     font-family: Poppins !important;
     font-weight: regular !important;
 }
+
+.nav-link{
+    font-weight: bold;
+}
