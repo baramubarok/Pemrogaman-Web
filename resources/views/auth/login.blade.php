@@ -23,17 +23,17 @@ $description = 'Login Page';
         <div class="w-100 w-lg-75 w-xxl-50">
             <div>
                 <div class="mb-5">
-                    <h1 class="display-3 text-white">Multiple Concepts</h1>
-                    <h1 class="display-3 text-white">Ready for Your Project</h1>
+                    <h1 class="display-3 text-white">Search Your Service</h1>
+                    <h1 class="display-3 text-white">Siap Melayani Kebutuhan Anda</h1>
                 </div>
                 <p class="h6 text-white lh-1-5 mb-5">
-                    Dynamically target high-payoff intellectual capital for customized technologies. Objectively
-                    integrate emerging core competencies before
-                    process-centric communities...
+                    Melayani berbagai kebutuhan anda dibidang jasa. Pengguna dapat memesan
+                    jasa yang tersediia dengan mudah dan cepat
                 </p>
-                <div class="mb-5">
+
+                {{-- <div class="mb-5">
                     <a class="btn btn-lg btn-outline-white" href="{{ url('/') }}">Learn More</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -45,17 +45,19 @@ $description = 'Login Page';
         <div class="sw-lg-50 px-5">
             <div class="sh-11">
                 <a href="{{ url('/') }}">
-                    <div class="logo-default"></div>
+                    <div class="cta-1 mb-0 text-primary">Search Your Service</div>
+
                 </a>
             </div>
             <div class="mb-5">
-                <h2 class="cta-1 mb-0 text-primary">Welcome,</h2>
-                <h2 class="cta-1 text-primary">let's get started!</h2>
+                <h2 class="cta-1 mb-0 text-primary">Selamat Datang,</h2>
+                <h2 class="cta-1 text-primary">Mari Kita Mulai!</h2>
             </div>
             <div class="mb-5">
-                <p class="h6">Please use your credentials to login.</p>
+
+                <p class="h6">Gunakanlah akun yang sudah terdaftar.</p>
                 <p class="h6">
-                    If you are not a member, please
+                    Jika anda tidak mempunyai akun silakan,
                     <a href="{{ url('/Pages/Authentication/Register') }}">register</a>
                     .
                 </p>

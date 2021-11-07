@@ -7,6 +7,12 @@
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $description }}" />
     @include('layouts.dashboard.head')
+
+    <style>
+        .fixed-background{
+            background:url("..img/background/bg.jpg")no-repeat center center fixed !important;
+        }
+    </style>
 </head>
 
 <body class="h-100">
