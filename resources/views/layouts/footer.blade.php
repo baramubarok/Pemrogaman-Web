@@ -11,10 +11,6 @@
         color: white;
     }
 
-    .text-white {
-        color: white;
-    }
-
     h5 {
         font-weight: 600;
         font-size: 20px;

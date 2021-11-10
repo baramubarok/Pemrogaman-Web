@@ -1,9 +1,4 @@
 <style>
-    input:focus {
-        outline: none;
-        box-shadow: 0 0 1px 1px #0FAE4E !important;
-    }
-
     .search {
         border: 1px solid #0FAE4E;
         border-radius: 8px;
@@ -12,30 +7,6 @@
     .search:focus {
         border: 1px solid #0FAE4E;
         border-radius: 8px;
-    }
-
-    .btn-primary {
-        background: #0FAE4E !important;
-    }
-
-    .rounded {
-        border-radius: 4px;
-    }
-
-    .rounded-8 {
-        border-radius: 8px;
-    }
-
-    .height-22 {
-        line-height: 22px
-    }
-
-    .text-green {
-        color: #0FAE4E !important;
-    }
-
-    .font-weight-semi {
-        font-weight: 500;
     }
 
 </style>
@@ -105,7 +76,7 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 

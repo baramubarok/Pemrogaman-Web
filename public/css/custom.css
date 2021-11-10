@@ -1,0 +1,42 @@
+input:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px #0fae4e !important;
+}
+
+.search {
+    border: 1px solid #0fae4e;
+    border-radius: 8px;
+}
+
+.search:focus {
+    border: 1px solid #0fae4e;
+    border-radius: 8px;
+}
+
+.btn-primary {
+    background: #0fae4e !important;
+}
+
+.rounded {
+    border-radius: 4px;
+}
+
+.rounded-8 {
+    border-radius: 8px;
+}
+
+.height-22 {
+    line-height: 22px;
+}
+
+.text-green {
+    color: #0fae4e !important;
+}
+
+.font-weight-semi {
+    font-weight: 500;
+}
+
+.text-white {
+    color: white;
+}
