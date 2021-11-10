@@ -9,9 +9,10 @@
     @include('layouts.dashboard.head')
 
     <style>
-        .fixed-background{
-            background:url("..img/background/bg.jpg")no-repeat center center fixed !important;
+        .fixed-background {
+            background: url("../img/background/bg2.jpg")no-repeat !important;
         }
+
     </style>
 </head>
 

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <p>{{ $data }}</p>
+    <div class="container">
+        <p>{{ $data }}</p>
+    </div>
 @endsection
