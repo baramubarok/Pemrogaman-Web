@@ -29,3 +29,7 @@ Route::get('/explore', function() {
     return view('explore');
 });
 
+Route::get('/service', function() {
+    return view('service');
+});
+
