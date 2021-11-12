@@ -1,0 +1,52 @@
+
+    .lingkaran {
+        width: 100px;
+        height: 100px;
+        background: #FCF088;
+        border-radius: 100%;
+    }
+    .lingkaran1 {
+        width: 100px;
+        height: 100px;
+        margin-left: 550pt;
+        margin-top: -5%;
+        background: #FCF088;
+        border-radius: 100%;
+    }
+    .box-judul{
+        width: 400px;
+        height: 100px;
+        margin-top: -40pt;
+        margin-left: 30pt;
+        /* background: greenyellow; */
+    }
+
+    .box-info{
+        width: 400px;
+        height: 100px;
+        margin-top: 20pt;
+        margin-left: 30pt;
+        /* background: greenyellow; */
+    }
+    .box-img{
+        width: 280px;
+        height: 350px;
+        margin-top: -250pt;
+        margin-left: 600pt;
+        border-radius: 2%;
+        /* background: blue; */
+    }
+    .banner{
+        width: 280px;
+        height: 350px;
+        border-radius: 2%;
+
+    }
+    .btn-success{
+        width: 150px;
+        height: 30px;
+        margin-left: 30pt;
+        margin-top: 5%;
+        border-radius: 2%;
+    }
+
