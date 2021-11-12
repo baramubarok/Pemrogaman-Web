@@ -2,6 +2,7 @@
     footer {
         min-height: 200px;
         background: #FBF9FB;
+        position: relative;
         width: 100%;
         bottom: 0;
     }
