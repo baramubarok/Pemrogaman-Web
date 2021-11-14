@@ -5,8 +5,8 @@
 
 <style>
     .checked {
-  color: orange;
-}
+    color: orange;
+    }
 </style>
 
 <div class="container mt-5">
