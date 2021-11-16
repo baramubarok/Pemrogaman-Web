@@ -42,6 +42,8 @@
         crossorigin="anonymous"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.js') }}">
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @include('alert.alert')
     @yield('script')
 
 </body>

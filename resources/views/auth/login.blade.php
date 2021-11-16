@@ -45,8 +45,7 @@ $description = 'Login Page';
         <div class="sw-lg-50 px-5">
             <div class="sh-11">
                 <a href="{{ url('/') }}">
-                    <div class="cta-1 mb-0 text-primary">Search Your Service</div>
-
+                    <img src="{{ asset('img/logo/logo.svg') }}">
                 </a>
             </div>
             <div class="mb-5">
@@ -58,12 +57,14 @@ $description = 'Login Page';
                 <p class="h6">Gunakanlah akun yang sudah terdaftar.</p>
                 <p class="h6">
                     Jika anda tidak mempunyai akun silakan,
-                    <a href="{{ url('/Pages/Authentication/Register') }}">register</a>
                     .
+                </p>
+                <p class="h6">
+                    <a href="{{ route('register') }}">register</a>
                 </p>
             </div>
             <div>
-                <form id="loginForm" class="tooltip-end-bottom" method="POST" action="{{ route('login') }}">
+                <form class="tooltip-end-bottom" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mb-3 filled form-group tooltip-end-top">
                         <i data-cs-icon="email"></i>

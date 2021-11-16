@@ -17,9 +17,18 @@ class CreateProvidersTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->string('name')->nullable();
-            $table->string('identity_type');
-            $table->string('identity_number');
-            $table->string('verified');
+            $table->string('category')->nullable();
+            $table->string('service')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('location')->nullable();
+            $table->string('maps_link')->nullable();
+            $table->string('service_area')->nullable();
+            $table->string('price')->nullable();
+            $table->string('identity_type')->nullable();
+            $table->string('identity_number')->nullable();
+            $table->string('identity_photo')->nullable();
+            $table->string('identity_selfie_photo')->nullable();
+            $table->string('status')->default('0');
             $table->timestamps();
         });
     }
