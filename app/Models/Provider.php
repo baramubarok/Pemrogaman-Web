@@ -11,8 +11,17 @@ class Provider extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'category',
+        'service',
+        'description',
+        'location',
+        'maps_link',
+        'service_area',
+        'price',
         'identity_type',
         'identity_number',
-        'verified',
+        'identity_photo',
+        'identity_selfie_photo',
+        'status',
     ];
 }

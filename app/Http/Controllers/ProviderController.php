@@ -7,4 +7,8 @@ use Illuminate\Http\Request;
 class ProviderController extends Controller
 {
     //
+    public function index()
+    {
+        dd('tes');
+    }
 }
