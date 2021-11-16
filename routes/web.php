@@ -36,3 +36,7 @@ Route::get('/service', function() {
 Route::get('/exp-kategori', function() {
     return view('exp-kategori');
 });
+
+Route::get('/detail-service', function() {
+    return view('detail-service');
+});
