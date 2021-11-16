@@ -25,7 +25,9 @@ $title = 'Dashboard User';
     <script src="{{ asset('/js/vendor/jquery.barrating.min.js') }}"></script>
     <script src="{{ asset('/js/cs/scrollspy.js') }}"></script>
     <script src="{{ asset('/js/vendor/select2.full.min.js') }}"></script>
+    <script src="{{ asset('/js/vendor/bootstrap-submenu.js') }}"></script>
     <script src="{{ asset('/js/vendor/datatables.min.js') }}"></script>
+    <script src="{{ asset('/js/vendor/mousetrap.min.js') }}"></script>
 @endsection
 
 @section('js_page')
@@ -102,121 +104,91 @@ $title = 'Dashboard User';
                     </div>
                 </div>
                 <!-- Inventory End -->
-
                 <!-- Categories Start -->
                 <div class="d-flex justify-content-between mb-4">
-                    <h2 class="small-title align-self-center">Profile</h2>
-                    <div>
+                    <h2 class="small-title align-self-center">Shop</h2>
+                    <div class="d-flex">
+                        <form id="publish-form" action="{{ route('shop-update-status') }}" method="post"
+                            class="me-3 align-self-center">
+                            @csrf
+                            <div class="form-check form-switch">
+                                @if ($shop->status == 1)
+                                    <input class="form-check-input" type="checkbox" id="publishTrue" name="publish" checked>
+                                @else
+                                    <input class="form-check-input" type="checkbox" id="publishFalse" name="publish">
+                                @endif
+                                <label class="form-check-label">Publish</label>
+                            </div>
+                        </form>
                         <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal"
                             data-bs-target="#modalEditProfile">
-                            Edit Profile
+                            Edit Shop
                         </button>
                         <div class="modal modal-right fade scroll-out-negative" id="modalEditProfile" tabindex="-1"
                             role="dialog" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable full">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Edit Profile</h5>
+                                        <h5 class="modal-title">Edit Shop Profile</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="scroll-track-visible">
-                                            <form id="form-edit-profile" action="{{ route('user-update-profile') }}"
+                                            <form id="form-edit-profile" action="{{ route('shop-update-profile') }}"
                                                 method="post" enctype="multipart/form-data">
                                                 @csrf
-                                                <p class="">Profile</p>
+                                                <p class="">Shop</p>
                                                 <div class="mb-3 filled">
-                                                    <i data-cs-icon="user"></i>
-                                                    <input class="form-control" name="name" placeholder="Name"
-                                                        value="{{ $user_profile->fullname }}" />
+                                                    <i data-cs-icon="home"></i>
+                                                    <input class="form-control" name="name" placeholder="Shop Name"
+                                                        value="{{ $shop->name }}" />
+                                                </div>
+                                                <div class="mb-3 filled">
+                                                    <i data-cs-icon="gear"></i>
+                                                    <input class="form-control" name="service" placeholder="Service Name"
+                                                        value="{{ $shop->service }}" />
                                                 </div>
                                                 <div class="mb-3 filled w-100">
-                                                    <i data-cs-icon="gender"></i>
-                                                    <select id="select2Filled" name="gender" data-placeholder="Gender">
-                                                        @if ($user_profile->gender == 'm')
-                                                            <option label="&nbsp;"></option>
-                                                            <option value="m" selected>Male</option>
-                                                            <option value="f">Female</option>
-                                                        @elseif ($user_profile->gender == 'f')
-                                                            <option label="&nbsp;"></option>
-                                                            <option value="m">Male</option>
-                                                            <option value="f" selected>Female</option>
-                                                        @else
-                                                            <option label="&nbsp;"></option>
-                                                            <option value="m">Male</option>
-                                                            <option value="f">Female</option>
-                                                        @endif
+                                                    <i data-cs-icon="content"></i>
+                                                    {{-- <input class="form-control" name="category"
+                                                        placeholder="Service Category" value="{{ $shop->service }}" /> --}}
+                                                    <select id="select2Filled" name="category"
+                                                        data-placeholder="Service Category">
+                                                        <option value="{{ $shop->category }}">{{ $shop->category }}
+                                                        </option>
+                                                        <option value="Electronics">Electornics</option>
+                                                        <option value="IT">IT</option>
+                                                        <option value="Transport">Transport</option>
+                                                        <option value="Industry">Industry</option>
+                                                        <option value="Others">Others</option>
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 filled">
-                                                    <i data-cs-icon="phone"></i>
-                                                    <input class="form-control" type="number" name="telp"
-                                                        placeholder="Telp" value="{{ $user_profile->telp }}" />
+                                                    <i data-cs-icon="coin"></i>
+                                                    <input class="form-control" type="number" name="price"
+                                                        placeholder="Service Price" value="{{ $shop->price }}" />
+                                                </div>
+
+                                                <div class="mb-3 filled">
+                                                    <i data-cs-icon="compass"></i>
+                                                    <input class="form-control" type="text" name="service_area"
+                                                        placeholder="Service Area" value="{{ $shop->service_area }}" />
                                                 </div>
                                                 <div class="mb-3 filled">
-                                                    <i data-cs-icon="file-image"></i>
-                                                    <input id="user-control" class="form-control" readonly
-                                                        onclick="openFile('user-photo','user-control')" type="text"
-                                                        placeholder="Photo" value="{{ $user_profile->photo }}" name />
-                                                    <input id="user-photo" class="d-none" type="file"
-                                                        accept="image/png, image/gif, image/jpeg" name="photo"
-                                                        placeholder="Photo" />
+                                                    <i data-cs-icon="destination"></i>
+                                                    <input class="form-control" type="text" name="maps_link"
+                                                        placeholder="Shop Gmaps Link" value="{{ $shop->maps_link }}" />
                                                 </div>
                                                 <div class="mb-3 filled">
                                                     <textarea placeholder="Address" name="address" class="form-control"
-                                                        rows="3" name="address">
-                                                                                                                                                {{ str_replace("\r\n\t/g", '', $user_profile->address) }}
-                                                                                                                                            </textarea>
+                                                        rows="3">{{ $shop->location }}</textarea>
                                                     <i data-cs-icon="pin"></i>
                                                 </div>
-
-                                                <hr class="my-5">
-
-                                                <p class="">Identity Verification</p>
-                                                <div class="mb-3 filled w-100">
+                                                <div class="mb-3 filled">
+                                                    <textarea placeholder="Description" name="desc" class="form-control"
+                                                        rows="3">{{ $shop->description }}</textarea>
                                                     <i data-cs-icon="news"></i>
-                                                    <select id="selectBasic" name="identity_type"
-                                                        data-placeholder="Identity Type">
-                                                        @if ($shop->identity_type == 'KTP')
-                                                            <option label="&nbsp;"></option>
-                                                            <option value="KTP" selected>KTP</option>
-                                                            <option value="Passport">Passport</option>
-                                                        @elseif ($shop->identity_type == 'Passport')
-                                                            <option label="&nbsp;"></option>
-                                                            <option value="KTP">KTP</option>
-                                                            <option value="Passport" selected>Passport</option>
-                                                        @else
-                                                            <option label="&nbsp;"></option>
-                                                            <option value="KTP">KTP</option>
-                                                            <option value="Passort">Passport</option>
-                                                        @endif
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 filled">
-                                                    <i data-cs-icon="credit-card"></i>
-                                                    <input class="form-control" type="text" name="identity"
-                                                        placeholder="Identity Number"
-                                                        value="{{ $shop->identity_number }}" />
-                                                </div>
-                                                <div class="mb-3 filled">
-                                                    <i data-cs-icon="file-data"></i>
-                                                    <input id="identity-control" class="form-control" readonly
-                                                        onclick="openFile('identity-photo','identity-control')" type="text"
-                                                        placeholder="Identity Photo"
-                                                        value="{{ $shop->identity_photo }}" />
-                                                    <input id="identity-photo" class="d-none" type="file"
-                                                        accept="image/png, image/gif, image/jpeg" name="identity_photo" />
-                                                </div>
-                                                <div class="mb-3 filled">
-                                                    <i data-cs-icon="file-image"></i>
-                                                    <input id="identity-selfie-control" class="form-control" readonly
-                                                        onclick="openFile('identity-selfie-photo','identity-selfie-control')"
-                                                        type="text" placeholder="Selfie With Identity Photo"
-                                                        value="{{ $shop->identity_selfie_photo }}" />
-                                                    <input id="identity-selfie-photo" class="d-none" type="file"
-                                                        accept="image/png, image/gif, image/jpeg"
-                                                        name="identity_selfie_photo" />
                                                 </div>
                                             </form>
                                         </div>
@@ -235,39 +207,24 @@ $title = 'Dashboard User';
                 </div>
                 <div class="card mb-5 h-auto">
                     <div class="card-body h-100">
-                        <div class="d-flex  mb-4">
-                            @if (Auth::user()->verified == 0)
-                                <div class="d-flex">
-                                    <i data-cs-icon="close" class="me-2 text-danger"></i>
-                                    <p class="text-danger mb-0">Not Verified </p>
-                                    <p class="mb-0 ms-1"> | Upload <b class="text-primary">Identity Card</b> to Open
-                                        Shop
-                                    </p>
-                                </div>
-                            @else
-                                <div class="d-flex">
-                                    <i data-cs-icon="check" class="me-2 text-primary"></i>
-                                    <p class="text-primary mb-0">Verified</p>
-                                </div>
-                            @endif
-
-                        </div>
                         <div class="row g-0 h-100">
                             <div class="col-12 col-sm-6 col-md-4 col-lg-2 h-100 d-flex justify-content-center flex-column">
                                 <img class="profile img-profile mx-auto" alt="profile"
                                     src="{{ asset('/img/profile/profile-9.jpg') }}" />
                             </div>
                             <div
-                                class="col-12 col-sm-6 col-md-8 col-lg-10 h-100 d-flex ps-5 justify-content-between flex-column">
-                                <p class="d-flex text-primary mb-1">Name</p>
-                                <a href="#" class="body-link d-flex mb-2">{{ $user_profile->fullname }} |
-                                    {{ Auth::user()->name }}</a>
-                                <p class="d-flex text-primary mb-1">Gender</p>
-                                <a href="#" class="body-link d-flex mb-2">
-                                    {{ $user_profile->gender == 'm' ? 'Male' : 'Female' }}
+                                class="col-12 col-sm-3 col-md-4 col-lg-5 h-100 d-flex ps-5 justify-content-between flex-column">
+                                <p class="d-flex text-primary mb-1">Shop Name</p>
+                                <a href="#" class="body-link d-flex mb-2">{{ $shop->name }}
                                 </a>
-                                <p class="d-flex text-primary mb-1">Address</p>
-                                <a href="#" class="body-link d-flex mb-2">{{ $user_profile->address }}</a>
+                                <p class="d-flex text-primary mb-1">Service Name</p>
+                                <a href="#" class="body-link d-flex mb-2">
+                                    {{ $shop->service }} | {{ $shop->category }}
+                                </a>
+                                <p class="d-flex text-primary mb-1">Service Area</p>
+                                <a href="#" class="body-link d-flex mb-2">{{ $shop->service_area }}</a>
+                                <p class="d-flex text-primary mb-1">Price</p>
+                                <a href="#" class="body-link d-flex mb-2">{{ $shop->price }}</a>
                                 <p class="d-flex text-primary mb-1">Contact</p>
                                 @if ($user_profile->telp != null)
                                     <a href="#" class="body-link d-flex mb-2">
@@ -278,6 +235,14 @@ $title = 'Dashboard User';
                                 <a href="#" class="body-link d-flex mb-2">
                                     <i data-cs-icon="email" class="me-2"></i>
                                     <p class="d-flex mb-1">{{ Auth::user()->email }}</p>
+                                </a>
+                            </div>
+                            <div class="col-12 col-sm-3 col-md-4 col-lg-5">
+                                <p class="d-flex text-primary mb-1">Address</p>
+                                <a href="{{ $shop->maps_link }}"
+                                    class="body-link d-flex mb-2">{{ $shop->location }}</a>
+                                <p class="d-flex text-primary mb-1">Description</p>
+                                <a href="#" class="body-link d-flex mb-2">{{ $shop->description }}
                                 </a>
                             </div>
                         </div>
@@ -369,7 +334,7 @@ $title = 'Dashboard User';
                                         @endphp
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ $o->user->name }}</td>
+                                            <td>{{ $o->user->fullname }}</td>
                                             <td>{{ $o->invoice }}</td>
                                             <td>{{ $o->total_price }}</td>
                                             <td>
@@ -421,62 +386,22 @@ $title = 'Dashboard User';
                                             </td>
                                             <td>
                                                 @if ($o->status == 0)
-                                                    <form id="formUpdate" action="{{ route('user-update-order') }}"
+                                                    <form id="formConfirm" action="{{ route('shop-update-order') }}"
                                                         method="post">
                                                         @csrf
                                                         <input type="hidden" class="hidden" name="id"
                                                             value="{{ $o->id }}">
-                                                        <input id="statusUpdate" type="hidden" class="hidden"
-                                                            name="status" value="{{ -1 }}">
+                                                        <input id="statusConfirm" type="hidden" class="hidden"
+                                                            name="status" value="">
+                                                        <button
+                                                            class="btn btn-icon btn-icon-only btn-outline-success btn-sm mb-1"
+                                                            type="button" onclick="acceptConfirm()">
+                                                            <i data-cs-icon="check"></i>
+                                                        </button>
                                                         <button
                                                             class="btn btn-icon btn-icon-only btn-outline-danger btn-sm mb-1"
-                                                            type="submit">
+                                                            type="button" onclick="cancelConfirm()">
                                                             <i data-cs-icon="close"></i>
-                                                        </button>
-                                                    </form>
-                                                @elseif ($o->status == 1 && $o->payment_method == 1 &&
-                                                    $o->payment_status == 1)
-                                                    <form id="formUpdate" action="{{ route('user-update-order') }}"
-                                                        method="post">
-                                                        @csrf
-                                                        <input type="hidden" class="hidden" name="id"
-                                                            value="{{ $o->id }}">
-                                                        <input id="statusCancel" type="hidden" class="hidden"
-                                                            name="status" value="{{ 2 }}">
-                                                        <button
-                                                            class="btn btn-icon btn-icon-only btn-outline-success btn-sm mb-1"
-                                                            type="submit">
-                                                            <i data-cs-icon="check"></i>
-                                                        </button>
-                                                    </form>
-                                                @elseif ($o->status == 1 && $o->payment_method == 0 &&
-                                                    $o->payment_status == 1)
-                                                    <form id="formUpdate" action="{{ route('user-update-order') }}"
-                                                        method="post">
-                                                        @csrf
-                                                        <input type="hidden" class="hidden" name="id"
-                                                            value="{{ $o->id }}">
-                                                        <input id="statusCancel" type="hidden" class="hidden"
-                                                            name="status" value="{{ 2 }}">
-                                                        <button
-                                                            class="btn btn-icon btn-icon-only btn-outline-success btn-sm mb-1"
-                                                            type="submit">
-                                                            <i data-cs-icon="check"></i>
-                                                        </button>
-                                                    </form>
-                                                @elseif ($o->status == 1 && $o->payment_method == 0 &&
-                                                    $o->payment_status == 0)
-                                                    <form id="formUpdate" action="{{ route('user-update-order') }}"
-                                                        method="post">
-                                                        @csrf
-                                                        <input type="hidden" class="hidden" name="id"
-                                                            value="{{ $o->id }}">
-                                                        <input id="statusCancel" type="hidden" class="hidden"
-                                                            name="status" value="{{ 2 }}">
-                                                        <button
-                                                            class="btn btn-icon btn-icon-only btn-outline-success btn-sm mb-1"
-                                                            type="submit">
-                                                            <i data-cs-icon="check"></i>
                                                         </button>
                                                     </form>
                                                 @endif
@@ -503,6 +428,23 @@ $title = 'Dashboard User';
                 const filename = $('#' + id + '').val().replace(/C:\\fakepath\\/i, '')
                 $('#' + input + '').val(filename)
             });
+        }
+
+        $('#publishTrue').on('change', function() {
+            $('#publish-form').submit()
+        });
+        $('#publishFalse').on('change', function() {
+            $('#publish-form').submit()
+        });
+
+        function acceptConfirm() {
+            $('#statusConfirm').val(1)
+            $('#formConfirm').submit()
+        }
+
+        function cancelConfirm() {
+            $('#statusConfirm').val(-1)
+            $('#formConfirm').submit()
         }
     </script>
 @endsection

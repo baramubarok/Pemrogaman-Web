@@ -14,7 +14,7 @@
         <a href="#" class="d-flex user position-relative" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <img class="profile" alt="profile" src="{{ asset('/img/profile/profile-9.jpg') }}" />
-            <div class="name">Lisa Jackson</div>
+            <div class="name">User</div>
         </a>
     </div>
     <!-- User Menu End -->
@@ -22,7 +22,7 @@
     <div class="menu-container flex-grow-1">
         <ul id="menu" class="menu">
             <li>
-                <a href="#dashboards" data-href="/user">
+                <a href="/user" data-href="/user">
                     <i data-cs-icon="user" class="icon" data-cs-size="18"></i>
                     <span class="label">User</span>
                 </a>
@@ -45,22 +45,10 @@
                 </ul> --}}
             </li>
             <li>
-                <a href="#apps" data-href="/shop">
+                <a href="/shop/profile" data-href="/shop/profile">
                     <i data-cs-icon="home" class="icon" data-cs-size="18"></i>
                     <span class="label">Shop</span>
                 </a>
-                <ul id="apps">
-                    <li>
-                        <a href="/shop/profile">
-                            <span class="label">Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/shop/order">
-                            <span class="label">Orders</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li>
                 <a href="{{ route('custom-logout') }}">
