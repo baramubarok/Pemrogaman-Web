@@ -35,4 +35,17 @@ Route::get('/service', function() {
 
 Route::get('/exp-kategori', function() {
     return view('exp-kategori');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user', [App\Http\Controllers\DashboardUser::class, 'index'])->name('dashboard');
+    // Route::get('/user/orders', [App\Http\Controllers\DashboardUser::class, 'order'])->name('user-order');
+    Route::post('/user/update-profile', [App\Http\Controllers\DashboardUser::class, 'updateProfile'])->name('user-update-profile');
+
+    Route::middleware(['provider'])->group(function () {
+        Route::get('/shop/profile', [App\Http\Controllers\ProviderController::class, 'index'])->name('shop');
+        Route::get('/shop/order', [App\Http\Controllers\ProviderController::class, 'index'])->name('shop-order');
+    });
+
+    Route::get('/Logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('custom-logout');
+
 });

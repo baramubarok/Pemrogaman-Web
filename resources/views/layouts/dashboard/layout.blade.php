@@ -4,14 +4,13 @@ data-{{ $key }}='{{ $value }}'
 @endforeach
 @endisset
 
-data-override='{"attributes": {"color": "light-green" }}'
+data-override='{"attributes": {"color": "light-green", "placement": "vertical"}}'
 >
 
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title>{{ $title }}</title>
-<meta name="description" content="{{ $description }}" />
 @include('layouts.dashboard.head')
 </head>
 
@@ -32,6 +31,9 @@ data-override='{"attributes": {"color": "light-green" }}'
 {{-- @include('_layout.modal_settings')
 @include('_layout.modal_search') --}}
 @include('layouts.dashboard.scripts')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@include('alert.alert')
+@yield('custom-js')
 </body>
 
 </html>
