@@ -21,31 +21,25 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/testing', function () {
-    return view('testing');
-});
+// Route::get('/explore', function () {
+//     return view('explore');
+// });
 
-Route::get('/explore', function () {
-    return view('explore');
-});
+Route::get('/service', [App\Http\Controllers\LandingPageController::class, 'service'])->name('service');
 
-Route::get('/service', function () {
-    return view('service');
-});
+// Route::get('/exp-kategori', function () {
+//     return view('exp-kategori');
+// });
 
-Route::get('/exp-kategori', function () {
-    return view('exp-kategori');
-});
-
-Route::get('/detail-service', function() {
-    return view('detail-service');
-});
+Route::get('/detail-service/{id}', [App\Http\Controllers\LandingPageController::class, 'detailService'])->name('detail-service');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/user', [App\Http\Controllers\DashboardUser::class, 'index'])->name('dashboard');
     // Route::get('/user/orders', [App\Http\Controllers\DashboardUser::class, 'order'])->name('user-order');
     Route::post('/user/update-profile', [App\Http\Controllers\DashboardUser::class, 'updateProfile'])->name('user-update-profile');
     Route::post('/user/update-order', [App\Http\Controllers\DashboardUser::class, 'updateOrder'])->name('user-update-order');
+
+    Route::post('/service/create-order', [App\Http\Controllers\LandingPageController::class, 'createOrder'])->name('create-order');
 
 
     Route::middleware(['provider'])->group(function () {
@@ -56,5 +50,4 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/Logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('custom-logout');
-
 });

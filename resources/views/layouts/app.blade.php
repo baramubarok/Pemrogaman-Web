@@ -43,9 +43,13 @@
         crossorigin="anonymous"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.js') }}">
     </script>
+    <script src="https://unpkg.com/feather-icons"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @include('alert.alert')
     @yield('script')
+    <script>
+        feather.replace()
+    </script>
 
 </body>
 
