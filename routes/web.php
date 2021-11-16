@@ -21,20 +21,21 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/testing', function() {
+Route::get('/testing', function () {
     return view('testing');
 });
 
-Route::get('/explore', function() {
+Route::get('/explore', function () {
     return view('explore');
 });
 
-Route::get('/service', function() {
+Route::get('/service', function () {
     return view('service');
 });
 
-Route::get('/exp-kategori', function() {
+Route::get('/exp-kategori', function () {
     return view('exp-kategori');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/user', [App\Http\Controllers\DashboardUser::class, 'index'])->name('dashboard');
@@ -47,5 +48,4 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/Logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('custom-logout');
-
 });
