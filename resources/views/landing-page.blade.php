@@ -112,6 +112,7 @@
         </div>
 
         <div class="album py-5">
+            <h1 class="text-center mb-5">Service</h1>
             <div class="container">
                 <div class="row">
                     @foreach ($services as $s)

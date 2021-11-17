@@ -92,13 +92,19 @@
             </div>
             <div class="col-sm-3">
                 <div class="card card-order p-4">
-                    <p class="text-14 text-secondary mb-0">Harga</p>
+                    <p class="text-14 text-secondary mb-0">Base Price</p>
                     <p class="text-20 text-green mb-3 font-weight-semi">Rp. {{ $service->price }}</p>
-                    <p class="text-14 text-secondary mb-0">Lokasi</p>
+                    <p class="text-14 text-secondary mb-0">Service Area</p>
                     <p class="text-20 text-green mb-3 font-weight-semi">{{ $service->service_area }}</p>
-                    <button class="btn btn-primary rounded-16 btn-block" data-toggle="modal"
-                        data-target="#exampleModal">Order</button>
-                    <button class="btn btn-outline-primary rounded-16 btn-block">Share</button>
+                    @if (Auth::user() != null)
+
+                        <button class="btn btn-primary rounded-16 btn-block" data-toggle="modal"
+                            data-target="#exampleModal">Order</button>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-primary rounded-16 btn-block">Order</a>
+
+                    @endif
+                    <button class="btn btn-outline-primary rounded-16 btn-block" id="shareButton">Share</button>
                 </div>
             </div>
         </div>
@@ -153,4 +159,18 @@
 
 
 
+@endsection
+
+@section('script')
+    <script>
+        $('#shareButton').on('click', function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Bagikan Jasa',
+                    text: 'Bagikan',
+                    url: 'https://searchyourservice.com/service',
+                })
+            }
+        })
+    </script>
 @endsection
